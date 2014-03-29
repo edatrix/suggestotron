@@ -55,6 +55,12 @@ class TopicsController < ApplicationController
     redirect_to(topics_path)
   end
 
+  def downvote
+    @topic = Topic.find(params[:id])
+    @topic.votes.first.destroy
+    redirect_to(topics_path)
+  end
+
   private
 
     def set_topic
